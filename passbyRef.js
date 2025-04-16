@@ -8,13 +8,22 @@
 
 // console.log('after', a); // 10 (unchanged)
 
-let obj1 = { name: "Alice" };
-//let obj2 = Object.assign(obj1);
-let obj2 = JSON.parse(JSON.stringify(obj1));
+let obj1 = {
+    name: "Alice",
+    details: {
+        age: 25,
+        city: "New York",
+        contact: {
+            phone: "1111111111"
+        }
+    }
+};
+let obj2 = structuredClone(obj1);
+//let obj2 = JSON.parse(JSON.stringify(obj1));
 
-console.log('Before', obj2.name); // Bob (changed)
+console.log('Before', obj2.details.age); // Bob (changed)
 
-obj1.name = "Bob";
-console.log('after',obj1.name); // Bob (changed)
+obj1.details.age = 55;
+console.log('obj1', obj1.details.age); // Bob (changed)
 
-console.log('after',obj2.name); // Bob (changed)
+console.log('obj2', obj2.details.age); // Bob (changed)
